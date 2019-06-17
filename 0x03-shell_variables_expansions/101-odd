@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $(!!)
+ls -1 | paste -sd" ""\n" | cut -d" " -f1
