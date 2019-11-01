@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# this script use while and case to display different string
+STRING1="bad luck from China";
+STRING2="bad luck from Japan";
+STRING3="bad luck from Italy";
+num=1
+while ((num <= 20));
+do
+	case "$num" in
+	4) echo "$num";
+	   echo "$STRING1";
+	   ;;
+	9) echo "$num";
+	   echo "$STRING2";
+	   ;;
+	17) echo "$num"
+	   echo "$STRING3";
+	   ;;
+	*) echo "$num";
+	   ;;
+	esac
+	((num++))
+done
