@@ -1,7 +1,7 @@
-#1/usr/bin/env bash
+#!/usr/bin/env bash
 #this script strips filenames in current directory and echo them
 LSGLOB="$( ls .)"
 for file in $LSGLOB;
 do
-	echo "$file"|cut -d- -f2;
+	echo "${file#*-}";
 done
