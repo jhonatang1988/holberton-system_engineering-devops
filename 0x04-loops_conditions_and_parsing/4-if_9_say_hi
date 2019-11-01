@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# this scrips echo a string and the 9th time another string with while loop
+STRING1="Holberton School"
+STRING2="Hi"
+num=1
+while ((num <= 10));
+do
+	echo "$STRING1";
+	if ((num == 9));
+	then
+	   echo "$STRING2";
+	fi
+	((num++));
+done
