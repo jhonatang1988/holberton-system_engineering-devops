@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# this scripts prints "Holberton School" 10 times with until loop
+STRING="Holberton School"
+num=10
+until ((num <= 0));
+do
+	echo "$STRING";
+	((num--));
+done

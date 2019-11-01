@@ -5,5 +5,5 @@ STRING="Holberton School"
 while ((num <= 10));
 do
 	echo "$STRING";
-	num=$(($num + 1));
+	num=$((num + 1));
 done
