@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# this script is displaing "Holberton School" 10 times with while loop
+num=1
+STRING="Holberton School"
+while ((num <= 10));
+do
+	echo "$STRING";
+	num=$(($num + 1));
+done
