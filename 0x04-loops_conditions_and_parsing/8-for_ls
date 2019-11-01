@@ -3,5 +3,5 @@
 LSGLOB="$( ls .)"
 for file in $LSGLOB;
 do
-	echo "${file#*-}";
+	echo "$file"|cut -d- -f2;
 done
