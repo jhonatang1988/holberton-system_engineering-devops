@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+# this script kills 4-to_infinity_and_beyond process without kill or killall
 pkill -f 4-to_infinity_and_beyond
