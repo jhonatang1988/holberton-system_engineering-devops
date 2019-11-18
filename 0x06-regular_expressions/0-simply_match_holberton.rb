@@ -1,4 +1,2 @@
 #!/usr/bin/env ruby
-for arg in ARGV
-   puts arg
-end
+puts ARGV[0].scan(/Holberton/).join
