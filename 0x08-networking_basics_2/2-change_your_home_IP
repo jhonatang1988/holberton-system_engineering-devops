@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# script to update localhost and facebook in /etc/hosts file
+IPL="127.0.0.2"
+HOSTL="localhost"
+
+sudo cp /etc/hosts ~/hosts.new
+sudo sed -i "/$HOSTL/ s/.*/$IPL\t$HOSTL/g" /etc/hosts
+echo "8.8.8.8      facebook.com" >> ~/hosts.new
+sudo cp -f ~/hosts.new /etc/hosts
