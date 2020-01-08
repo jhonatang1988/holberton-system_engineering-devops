@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # updates and install nginx, then creates a index.html
-sudo apt-get update
+sudo apt-get -y update
 sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
 echo "Holberton School" | sudo tee /var/www/html/index.html
 new_string="server_name _;\n\trewrite ^\/redirect_me http:\/\/104.196.19.203\/some_page.html permanent;"
 sudo sed -i "s/server_name _;/$new_string/" /etc/nginx/sites-available/default
@@ -10,8 +11,9 @@ string_404="server_name _;\n\terror_page 404 \/custom_404.html;\n\tlocation = \/
 sudo sed -i "s/server_name _;/$string_404/" /etc/nginx/sites-enabled/default
 sudo nginx -t
 sudo service nginx restart
-new_string="127.0.0.1 localhost 950-web-02"
-sudo sed -i "s/127.0.0.1/$new_string/" /etc/hosts
-xservedby_string="sendfile on;\n\tadd_header X-Served-By $HOSTNAME;"
-sudo sed -i "s/sendfile on;/$xservedby_string/" /etc/nginx/nginx.conf
-sudo nginx -s reload
+# restart Nginx service for get changes
+name=$HOSTNAME
+# configure the file nginx.conf in order the set the header
+sudo sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\t# Adding Header/" /etc/nginx/nginx.conf
+sudo sed -i "s/# Adding Header/# Adding Header \n\tadd_header X-Served-By $name;/" /etc/nginx/nginx.conf
+sudo service nginx restart
