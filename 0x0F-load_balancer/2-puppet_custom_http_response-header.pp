@@ -1,20 +1,12 @@
 # updates and install nginx, then creates a index.html
-exec { '/usr/bin/env apt-get -y update' : }
--> package { 'nginx':
-  ensure => installed,
+exec {'install-Nginx':
+  command  => 'sudo apt update ; sudo apt -y install nginx ; echo "Holberton School" | sudo tee /var/www/html/index.html',
+  provider => shell,
+  before   => Exec['configure HTTP header'],
 }
 
--> file_line { 'add header' :
-  ensure => present,
-  line   => "\tadd_header X-Served-By ${{hostname};",
-  path   => '/etc/nginx/sites-available/default',
-  after  => 'server_name _;',
-}
-
--> file { '/var/www/html/index.html' :
-  content => 'Holberton School'
-}
-
--> service { 'nginx':
-  ensure => running,
+exec {'configure HTTP header':
+  environment => ["name=${{hostname}"],
+  command     => 'sudo sed -i "s/include \/etc\/nginx\/sites-enabled\/\*;/include \/etc\/nginx\/sites-enabled\/\*;\n\t# Adding Header/" /etc/nginx/nginx.conf; sudo sed -i "s/# Adding Header/# Adding Header \n\tadd_header X-Served-By ${name;/" /etc/nginx/nginx.conf ; sudo   service nginx restart',
+  provider    => shell,
 }
