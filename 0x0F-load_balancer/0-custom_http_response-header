@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# updates and install nginx, then creates a index.html
+sudo apt-get update
+sudo apt-get -y install nginx
+echo "Holberton School" | sudo tee /var/www/html/index.html
+sudo nginx -t
+sudo service nginx restart
+new_string="127.0.0.1 localhost 950-web-02"
+sudo sed -i "s/127.0.0.1/$new_string/" /etc/hosts
+xservedby_string="sendfile on;\n\tadd_header X-Served-By 950-web-02;"
+sudo sed -i "s/sendfile on;/$xservedby_string/" /etc/nginx/nginx.conf
+sudo nginx -s reload
