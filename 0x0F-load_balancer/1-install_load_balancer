@@ -1,4 +1,4 @@
-#!/usr/bin/env/ bash
+#!/usr/bin/env bash
 # creates a haproxy load balancer server
 sudo apt-get -y update
 sudo apt-get install -y software-properties-common
