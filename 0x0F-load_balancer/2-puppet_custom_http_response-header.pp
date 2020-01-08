@@ -1,6 +1,20 @@
 # updates and install nginx, then creates a index.html
-exec { 'installnginxwithcustomheader':
-  environment => ["ahostname=${hostname}"]
-  command     => 'sudo apt update ; sudo apt -y install nginx ; echo "Holberton School" | sudo tee /var/www/html/index.html; sudo sed -i "s/sendfile on;/sendfile on;\n\tadd_header X-Served-By $ahostname;/" /etc/nginx/nginx.conf'; sudo service nginx restart',
-  provider    => shell,
+exec { '/usr/bin/env apt-get -y update' : }
+-> package { 'nginx':
+   ensure => installed,
+}
+
+-> file_line { 'add header' :
+   ensure => present,
+   line   => "\tadd_header X-Served-By ${{hostname};",
+   path   => '/etc/nginx/sites-available/default',
+   after  => 'server_name _;',
+}
+
+-> file { '/var/www/html/index.html' :
+   content => 'Holberton School'
+}
+
+-> service { 'nginx':
+   ensure => running,
 }
