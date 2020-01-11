@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # start a nginx server with port 80
 sudo sed -i "s/listen 8080/ listen 80/" /etc/nginx/sites-available/default
-sedo sed -i "s/8080/80" /etc/nginx/sites-available/default
+sedo sed -i "s/8080/80/" /etc/nginx/sites-available/default
 ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-rm /etc/nginx/sites-enabled/default~
-rm /etc/nginx/sites-available/default~
+rm /etc/nginx/sites-enabled/default~ || true
+rm /etc/nginx/sites-available/default~ || true
 sudo service nginx reload
 sudo service nginx start
