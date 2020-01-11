@@ -1,0 +1,3 @@
+#!/bin/bash
+# start a nginx server
+sudo service nginx restart
