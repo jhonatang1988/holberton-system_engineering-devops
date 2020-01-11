@@ -2,4 +2,6 @@
 # start a nginx server with port 80
 sudo sed -i "s/listen 8080/listen 80/" /etc/nginx/sites-enabled/default
 sedo sed -i "s/8080/80" /etc/nginx/sites-enabled/default
-sudo service nginx -s reload
+rm ./*~
+sudo service nginx reload
+sudo service nginx start
