@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # change the nginx user
-chmod 744 /etc/nginx/nginx.conf
 sudo sed -i '3i\\n user nginx;' /etc/nginx/nginx.conf
 sudo sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+sudo pkill -o apache2
 sudo -u nginx -c "service nginx restart"
