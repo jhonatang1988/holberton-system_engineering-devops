@@ -11,4 +11,4 @@ fi
 if [ $# -eq 3 ]
 then
     scp -o StrictHostKeyChecking=no -C -i "$1" "$3@$2":'~/'
-if
+fi
