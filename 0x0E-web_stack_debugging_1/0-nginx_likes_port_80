@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
-# start a nginx server with port 80
-sudo sed -i "s/listen 8080/ listen 80/" /etc/nginx/sites-available/default
-sedo sed -i "s/8080/80/" /etc/nginx/sites-available/default
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-rm /etc/nginx/sites-enabled/default~ || true
-rm /etc/nginx/sites-available/default~ || true
+# fixing the start of nginx,the fail was because there are two files differents
+# the /etc/nginx/sites-availables/default and /etc/nginx/sites-enables/default
+# we have to change the enables to listen port 80 and erase the ~ file
+cd /etc/nginx/sites-enabled/
+sudo sed -i "s/listen 8080/ listen 80/" default
+sudo sed -i "s/8080/80/" default
+# as we see the default of enables dir was set at 8080 not 80
+# remove the posible others files that dont have the new configuration
+rm ./*~
+cd ~
+# refresh changes
 sudo service nginx reload
 sudo service nginx start
