@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# function to check subdomains
+dnsinfo ()
+{
+    if [[ "$#" -eq 1 ]]
+    then
+	arr=(www lb-01 web-01 web-02)
+    else
+	arr=("$2")
+    fi
+    for i in "${arr[@]}"; do
+	ip=$(dig +noall +answer +multiline "$i.$1" | awk \{'print $5'\})
+	rectype=$(dig +noall +answer +multiline "$i.$1" | awk \{'print $4'\})
+	echo "The subdomain $i is a $rectype record and points to $ip"
+    done
+}
+if [[ "$#" -eq 1 ]]
+then
+    dnsinfo "$1"
+elif [[ "$#" -eq 2 ]]
+then
+    dnsinfo "$1" "$2"
+fi
