@@ -27,10 +27,11 @@ if __name__ == "__main__":
             tasktitlelist = []
 
             for task in tasks:
-                if task['completed']:
-                    NUMBER_OF_DONE_TASKS += 1
-                    tasktitlelist.append(task['title'])
-                TOTAL_NUMBER_OF_TASKS += 1
+                if task['userId'] == int(employeeid):
+                    if task['completed']:
+                        NUMBER_OF_DONE_TASKS += 1
+                        tasktitlelist.append(task['title'])
+                    TOTAL_NUMBER_OF_TASKS += 1
 
             EMPLOYEE_NAME = profile['name']
 
@@ -42,7 +43,6 @@ if __name__ == "__main__":
             for tasktitle in tasktitlelist:
                 print("\t {}".format(tasktitle))
         except ValueError:
-            print("argument must be an integer")
+            pass
     else:
-        print(len(sys.argv))
-        print(sys.argv[1])
+        pass
