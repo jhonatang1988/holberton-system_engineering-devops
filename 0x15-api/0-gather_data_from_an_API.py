@@ -29,8 +29,8 @@ if __name__ == "__main__":
             for task in tasks:
                 if task['completed']:
                     NUMBER_OF_DONE_TASKS += 1
+                    tasktitlelist.append(task['title'])
                 TOTAL_NUMBER_OF_TASKS += 1
-                tasktitlelist.append(task['title'])
 
             EMPLOYEE_NAME = profile['name']
 
