@@ -24,8 +24,9 @@ if __name__ == "__main__":
             profile = rp.json()
 
             username = profile['username']
+            filename = "{}.csv".format(employeeid)
 
-            f = csv.writer(open("2.csv",
+            f = csv.writer(open(filename,
                                 "w",
                                 newline='',),
                            quoting=csv.QUOTE_ALL,
