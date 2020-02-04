@@ -27,7 +27,9 @@ if __name__ == "__main__":
 
             f = csv.writer(open("2.csv",
                                 "w",
-                                newline=''), quoting=csv.QUOTE_ALL)
+                                newline='',),
+                           quoting=csv.QUOTE_ALL,
+                           delimiter=',')
 
             for task in tasks:
                 if task['userId'] == int(employeeid):
