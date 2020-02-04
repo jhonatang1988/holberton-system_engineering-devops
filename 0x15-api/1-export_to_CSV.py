@@ -2,9 +2,9 @@
 """
 fetch an employee task's progress
 """
+import csv
 import requests
 import sys
-import csv
 
 if __name__ == "__main__":
     if len(sys.argv) == 2 and isinstance(sys.argv[1], str):
@@ -43,3 +43,4 @@ if __name__ == "__main__":
             pass
     else:
         pass
+
