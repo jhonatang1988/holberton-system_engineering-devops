@@ -23,7 +23,7 @@ if __name__ == "__main__":
             tasks = rt.json()
             profile = rp.json()
 
-            name = profile['name']
+            username = profile['username']
 
             f = csv.writer(open("2.csv",
                                 "w",
@@ -34,7 +34,7 @@ if __name__ == "__main__":
             for task in tasks:
                 if task['userId'] == int(employeeid):
                     f.writerow([task['userId'],
-                                name,
+                                username,
                                 task['completed'],
                                 task['title']])
 
