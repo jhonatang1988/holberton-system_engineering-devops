@@ -7,6 +7,9 @@ import re
 
 
 def top_ten(subreddit):
+    """
+    top_ten
+    """
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
 
     headers = {
@@ -33,4 +36,7 @@ def top_ten(subreddit):
 
 
 def rmnonascii(s):
+    """
+    remove non ascii
+    """
     return ''.join([c if 32 < ord(c) < 127 else " " for c in s])
