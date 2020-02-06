@@ -46,7 +46,6 @@ def resultsperpage(subreddit, hot_list=[], after=''):
         listing = rr.json()
 
         if 'data' in listing:
-            print('tiene data')
             posts = listing['data']['children']
             for post in posts:
                 for key, value in post['data'].items():
@@ -54,7 +53,6 @@ def resultsperpage(subreddit, hot_list=[], after=''):
                         hot_list.append(rmnonascii(value))
             return [hot_list, rmnonascii(listing['data']['after'])]
         else:
-            print('no tiene data')
             return [hot_list, None]
     except Exception as e:
         print(e)
