@@ -37,11 +37,4 @@ def top_ten(subreddit):
             for child in children:
                 for key, value in child['data'].items():
                     if key == 'title':
-                        print(rmnonascii(value))
-
-
-def rmnonascii(s):
-    """
-    remove non ascii
-    """
-    return ''.join([c if 32 < ord(c) < 127 else " " for c in s])
+                        print(value)
