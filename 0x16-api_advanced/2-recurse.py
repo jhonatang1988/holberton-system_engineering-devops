@@ -47,15 +47,21 @@ def resultsperpage(subreddit, hot_list=[], after=''):
 
         if 'data' in listing:
             posts = listing['data']['children']
-            for post in posts:
-                for key, value in post['data'].items():
-                    if key == 'title':
-                        hot_list.append(rmnonascii(value))
+            titlelist = list((map(gettitle, posts)))
+            hot_list += titlelist
             return [hot_list, rmnonascii(listing['data']['after'])]
         else:
             return [hot_list, None]
     except Exception as e:
         print(e)
+
+
+def gettitle(post):
+    """
+    get title from dict
+    """
+    return rmnonascii(post['data']['title'])
+
 
 def rmnonascii(s):
     """
