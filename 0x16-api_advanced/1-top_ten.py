@@ -20,7 +20,10 @@ def top_ten(subreddit):
         'limit': 10
     }
 
-    rr = requests.get(url, headers=headers, params=payload, allow_redirects=False)
+    rr = requests.get(url,
+                      headers=headers,
+                      params=payload,
+                      allow_redirects=False)
 
     if rr.status_code != 200:
         print(None)
