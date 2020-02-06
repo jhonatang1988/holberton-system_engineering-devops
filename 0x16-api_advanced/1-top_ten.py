@@ -16,7 +16,8 @@ def top_ten(subreddit):
     }
 
     payload = {
-        'limit': 10
+        'limit': 10,
+        'raw_json': 1
     }
 
     rr = requests.get(url,
