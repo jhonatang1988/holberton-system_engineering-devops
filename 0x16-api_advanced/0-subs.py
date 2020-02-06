@@ -11,7 +11,7 @@ def number_of_subscribers(subreddit):
         'User-Agent': 'User-Agent: learningapi:v1.0.0 (by /u/jhonatang1988)'
     }
 
-    rr = requests.get(url, headers=headers)
+    rr = requests.get(url, headers=headers, allow_redirects=False)
 
     about = rr.json()
 
