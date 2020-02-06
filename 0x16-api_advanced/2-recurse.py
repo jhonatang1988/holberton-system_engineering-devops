@@ -6,6 +6,9 @@ import requests
 
 
 def recurse(subreddit, hot_list=[], after=''):
+    """
+    recurse
+    """
     try:
         results = resultsperpage(subreddit, hot_list, after)
         if results[0]:
@@ -21,6 +24,9 @@ def recurse(subreddit, hot_list=[], after=''):
 
 
 def resultsperpage(subreddit, hot_list=[], after=''):
+    """
+    resulsperpage
+    """
     try:
         url = "https://www.reddit.com/r/{}/hot.json?raw_json=1&after={}"\
             .format(subreddit, after)
@@ -48,6 +54,9 @@ def resultsperpage(subreddit, hot_list=[], after=''):
 
 
 def rmnonascii(s):
+    """
+    rmnonascii
+    """
     try:
         if s:
             return ''.join([c if 32 < ord(c) < 127 else " " for c in s])
