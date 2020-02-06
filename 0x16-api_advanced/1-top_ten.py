@@ -15,6 +15,10 @@ def top_ten(subreddit):
 
     rr = requests.get(url, headers=headers, allow_redirects=False)
 
+    if rr.status_code != 200:
+        print("None")
+        return None
+
     listing = rr.json()
 
     if 'data' in listing:
