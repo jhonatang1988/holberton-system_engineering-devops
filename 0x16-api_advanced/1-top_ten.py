@@ -10,7 +10,7 @@ def top_ten(subreddit):
     """
     top_ten
     """
-    url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
+    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
 
     headers = {
         'User-Agent': 'User-Agent: learningapi:v1.0.0 (by /u/jhonatang1988)'
