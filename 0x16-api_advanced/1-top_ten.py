@@ -3,7 +3,6 @@
 get 10 hot posts from subreddit
 """
 import requests
-import re
 
 
 def top_ten(subreddit):
