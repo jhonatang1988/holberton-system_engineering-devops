@@ -37,8 +37,6 @@ def top_ten(subreddit):
                 for key, value in child['data'].items():
                     if key == 'title':
                         print(rmnonascii(value))
-    else:
-        print(None)
 
 
 def rmnonascii(s):
