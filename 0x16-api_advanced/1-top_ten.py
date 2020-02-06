@@ -31,5 +31,6 @@ def top_ten(subreddit):
     else:
         print(None)
 
+
 def rmnonascii(s):
     return ''.join([c if 32 < ord(c) < 127 else " " for c in s])
