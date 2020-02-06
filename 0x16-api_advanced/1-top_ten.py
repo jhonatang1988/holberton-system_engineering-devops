@@ -16,10 +16,14 @@ def top_ten(subreddit):
         'User-Agent': 'User-Agent: learningapi:v1.0.0 (by /u/jhonatang1988)'
     }
 
-    rr = requests.get(url, headers=headers, allow_redirects=False)
+    payload = {
+        'limit': 10
+    }
+
+    rr = requests.get(url, headers=headers, params=payload, allow_redirects=False)
 
     if rr.status_code != 200:
-        print("None")
+        print(None)
         return None
 
     listing = rr.json()
