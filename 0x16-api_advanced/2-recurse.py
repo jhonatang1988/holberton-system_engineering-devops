@@ -11,6 +11,8 @@ def recurse(subreddit, hot_list=[], after=''):
     """
     try:
         results = resultsperpage(subreddit, hot_list, after)
+        if not results[0] and not results[1]:
+            return None
         if results[0]:
             hot_list.append(results[0])
         if results[1]:
@@ -38,9 +40,13 @@ def resultsperpage(subreddit, hot_list=[], after=''):
 
         rr = requests.get(url, headers=headers, allow_redirects=False)
 
+        if rr.status_code != 200:
+            return [None, None]
+
         listing = rr.json()
 
         if 'data' in listing:
+            print('tiene data')
             posts = listing['data']['children']
             for post in posts:
                 for key, value in post['data'].items():
@@ -48,10 +54,10 @@ def resultsperpage(subreddit, hot_list=[], after=''):
                         hot_list.append(rmnonascii(value))
             return [hot_list, rmnonascii(listing['data']['after'])]
         else:
+            print('no tiene data')
             return [hot_list, None]
-    except:
-        print('se jodio listing per page')
-
+    except Exception as e:
+        print(e)
 
 def rmnonascii(s):
     """
